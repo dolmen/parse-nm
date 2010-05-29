@@ -1,0 +1,6 @@
+Revision history for Parse::nm
+
+0.01    2010-05-29T17:30+02:00    DOLMEN (Olivier Mengué)
+        First basic release.
+        No test suite.
+        Basic, incomplete documentation.
