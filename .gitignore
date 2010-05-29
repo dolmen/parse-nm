@@ -1,0 +1,13 @@
+MYMETA.yml
+Build
+Build.bat
+Built.cmd
+_build/
+blib/
+MANIFEST
+META.yml
+*.bak
+*.old
+*.tmp
+Parse-nm-*.tar.gz
+Parse-nm-*/

@@ -1,0 +1,15 @@
+^MYMETA.yml$
+^_build/
+^\.git/
+\b\..*\.swp$
+~$
+\.bak$
+\.old$
+\.tmp$
+blib\b
+\bcore$
+^Build$
+^Build.bat$
+^Build.cmd$
+^Parse-nm-.*\.tar.gz$
+^Parse-nm-.*\b
