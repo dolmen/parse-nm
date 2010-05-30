@@ -12,7 +12,7 @@ sub new
 {
     my ($class, %args) = @_;
     _build_filters(\%args);
-    bless \%args, (ref $class ? ref $class : $class);
+    return bless \%args, (ref $class ? ref $class : $class);
 }
 
 sub _build_filters
@@ -52,8 +52,8 @@ sub run
     my @options = @{$args{options}};
     my @files = ref $args{files} ? @{$args{files}} : $args{files};
     #open my $nm, 'nm '.join(' ', map { my $x = $_; $x =~ s/"/\\"/g; qq{"$x"} } @files).' |'
-    #    or die;
-    open my $nm, shell_quote('nm', @options, @files).' |';
+    open my $nm, '-|', shell_quote('nm', @options, @files)
+        or die;
     return $self->parse($nm, %args);
 }
 
