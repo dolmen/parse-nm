@@ -5,6 +5,7 @@ package Parse::nm;
 
 our $VERSION = '0.02';
 
+use Carp 'croak';
 use Regexp::Assemble;
 use String::ShellQuote;
 
@@ -53,8 +54,10 @@ sub run
     my @files = ref $args{files} ? @{$args{files}} : $args{files};
     #open my $nm, 'nm '.join(' ', map { my $x = $_; $x =~ s/"/\\"/g; qq{"$x"} } @files).' |'
     open my $nm, '-|', shell_quote('nm', '-P', @options, @files)
-        or die;
-    return $self->parse($nm, %args);
+        or croak "Can't run 'nm': $!";
+    my $r = $self->parse($nm, %args);
+    close $nm;
+    return $r;
 }
 
 
@@ -73,6 +76,7 @@ sub parse
             }
         }
     }
+    return ();
 }
 
 1;
