@@ -3,7 +3,7 @@ use warnings;
 
 package Parse::nm;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Regexp::Assemble;
 use String::ShellQuote;
