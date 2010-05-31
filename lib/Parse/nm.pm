@@ -27,8 +27,8 @@ sub _build_filters
     if (exists $args->{filters}) {
         my @f = @{$args->{filters}};
         for my $f (@f) {
-            my $name = $f->{name};
-            my $type = $f->{type};
+            my $name = $f->{name} || '\S+';
+            my $type = $f->{type} || '[A-Z]';
             $args->{_re}->add("^$name +$type +");
             push @{$args->{_comp_filters}}, [
                 qr/^($name) +($type) +/, $f->{action}
@@ -52,7 +52,7 @@ sub run
     my @options = @{$args{options}};
     my @files = ref $args{files} ? @{$args{files}} : $args{files};
     #open my $nm, 'nm '.join(' ', map { my $x = $_; $x =~ s/"/\\"/g; qq{"$x"} } @files).' |'
-    open my $nm, '-|', shell_quote('nm', @options, @files)
+    open my $nm, '-|', shell_quote('nm', '-P', @options, @files)
         or die;
     return $self->parse($nm, %args);
 }
