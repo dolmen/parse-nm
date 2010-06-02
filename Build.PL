@@ -24,6 +24,7 @@ my $builder = Module::Build->new(
 	build_requires => {
 		'Module::Build' => '0.3607',
 		'Test::More' => '0.94',
+		'File::Spec' => 0,
 	},
 );
 
