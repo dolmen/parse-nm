@@ -7,6 +7,7 @@
 \.old$
 \.tmp$
 blib\b
+cover_db\b
 \bcore$
 ^Build$
 ^Build.bat$

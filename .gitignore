@@ -9,5 +9,6 @@ META.yml
 *.bak
 *.old
 *.tmp
+cover_db/
 Parse-nm-*.tar.gz
 Parse-nm-*/
