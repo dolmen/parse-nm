@@ -13,7 +13,7 @@ my $builder = Module::Build->new(
 	meta_add    => {
 		resources => {
 			homepage => 'http://github.com/dolmen/parse-nm',
-			repository => 'http://github.com/dolmen/parse-nm',
+			repository => 'http://github.com/dolmen/parse-nm.git',
 			bugtracker => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Parse-nm',
 		},
 	},
