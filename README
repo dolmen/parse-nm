@@ -29,10 +29,14 @@ You can also view the documentation of the latest release online:
 
     http://search.cpan.org/dist/Parse-nm/lib/Parse/nm.pm
 
+Report bugs on the RT queue:
+
+    http://rt.cpan.org/NoAuth/Bugs.html?Dist=Parse-nm
+
 
 COPYRIGHT & LICENSE
 
-Copyright (C) 2010 Olivier Mengué
+Copyright © 2010 Olivier Mengué
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.12.0 or,
