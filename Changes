@@ -1,5 +1,9 @@
 Revision history for Parse::nm
 
+0.03    2010-06-03T01:15+02:00    DOLMEN (Olivier Mengué)
+        Added test 't/11-run.t' that compiles a C source and 'nm' it.
+        Fixed minor issues.
+
 0.02    2010-06-01T01:10+02:00    DOLMEN (Olivier Mengué)
         Added basic, incomplete, test suite.
         Use 3-args open() as suggested by Perl::Critic.
