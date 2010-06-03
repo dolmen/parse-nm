@@ -45,7 +45,7 @@ SKIP: {
                 pass "action2 called";
                 is ++$count, 2;
                 is $_[0], "TestVar", "arg0";
-                is $_[1], "C", "arg1";
+                is $_[1], 'D', 'arg1';
             }
         }
     ]);
