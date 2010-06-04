@@ -1,5 +1,10 @@
 Revision history for Parse::nm
 
+0.04    2010-06-04T00:00+02:00    DOLMEN (Olivier Mengué)
+        Testsuite, t/11-run.t:
+        - fixed t/t.c to get more consistent behavior on different platforms.
+        - now building using ExtUtils::CBuilder
+
 0.03    2010-06-03T01:15+02:00    DOLMEN (Olivier Mengué)
         Added test 't/11-run.t' that compiles a C source and 'nm' it.
         Fixed minor issues.

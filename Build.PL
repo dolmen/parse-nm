@@ -26,6 +26,9 @@ my $builder = Module::Build->new(
 		'Test::More' => '0.94',
 		'File::Spec' => 0,
 	},
+    build_recommends => {
+        'ExtUtils::CBuilder' => '0.27',
+    },
 );
 
 $builder->create_build_script();
