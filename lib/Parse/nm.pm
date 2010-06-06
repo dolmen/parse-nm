@@ -88,7 +88,7 @@ Parse::nm - Run and parse 'nm' command output with filter callbacks
 
 =head1 SYNOPSIS
 
-TODO
+Class interface:
 
     use Parse::nm;
 
@@ -102,7 +102,80 @@ TODO
                        }
                      },
                    ],
-                   );
+                   files => 't.o',
+                );
+
+Object interface:
+
+    use Parse::nm;
+
+    my $pnm = Parse::nm->new(options => ...,
+                             filters => ...);
+    $pnm->run(files => 'file1.o');
+    $pnm->run(files => 'file2.o');
+
+    $str = "TestFunc T 0 0 \n";
+    $pnm->parse(\$str);
+
+=head1 METHODS
+
+=head2 ->new(%options)
+
+Builds an object with the default options.
+
+=head2 ->parse(*GLOB, %options)
+
+Parse 'nm -P'-style data coming from a filehandle.
+
+Note that if your Perl is compiled with PerlIO (this is the default since
+5.8.0), you can easily parse a string by opening a string reference to it.
+
+    open($fh, '<', \$str)
+a string 
+
+=head2 ->run(%options)
+
+Run C<nm> and parse its output.
+
+=head1 OPTIONS
+
+=over 4
+
+=item options => [ ]
+
+Command-line options given to C<nm> to run it.
+The C<-P> (POSIX-style output) is always given.
+C<-A> (show input file) is currently incompatible.
+
+=item files => [ ]
+
+List of files to give to C<nm> for parsing.
+
+=item filters => \@filters
+
+=over 4
+
+=item name => qr/\S+/
+
+A regexp that must match the name of the symbol.
+
+Don't use C<^> or C<$>: this is not supported.
+
+=item type => qr/[A-Z]/
+
+A regexp that must match the type of the symbol. Types are single ASCII letter.
+See the C<nm> man page of your operating system for more information.
+
+Don't use C<^> or C<$>: this is not supported.
+
+=item action => sub { ... }
+
+A callback that will be triggered for each line where both C<name> and C<type>
+match.
+
+=back
+
+=back
 
 =head1 SEE ALSO
 
