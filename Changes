@@ -1,6 +1,7 @@
 Revision history for Parse::nm
 
 0.04    2010-06-04T00:00+02:00    DOLMEN (Olivier Mengué)
+        Full POD documentation.
         Testsuite, t/11-run.t:
         - fixed t/t.c to get more consistent behavior on different platforms.
         - now building using ExtUtils::CBuilder
