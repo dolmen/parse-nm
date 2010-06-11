@@ -30,5 +30,5 @@ my $builder = Module::Build->new(
         'ExtUtils::CBuilder' => '0.27',
     },
 );
-
+$builder->add_to_cleanup('MANIFEST.bak');
 $builder->create_build_script();
