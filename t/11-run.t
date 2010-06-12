@@ -58,7 +58,7 @@ Parse::nm->run(
 	    pass "action2 called";
 	    is ++$count, 2;
 	    is $_[0], "TestVar", "arg0";
-	    is $_[1], 'D', 'arg1';
+	    like $_[1], qr/^[GD]$/, 'arg1';
 	}
     }
 ]);

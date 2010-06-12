@@ -1,5 +1,8 @@
 Revision history for Parse::nm
 
+0.05    2010-06-11T15:07+0200     DOLMEN (Olivier Mengué)
+        Relax t/11-run.t to make it pass on Linux/Alpha.
+
 0.04    2010-06-04T00:00+02:00    DOLMEN (Olivier Mengué)
         Full POD documentation.
         Testsuite, t/11-run.t:
