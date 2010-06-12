@@ -3,7 +3,7 @@ use warnings;
 
 package Parse::nm;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use Carp 'croak';
 use Regexp::Assemble;
