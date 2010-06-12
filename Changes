@@ -1,7 +1,9 @@
 Revision history for Parse::nm
 
 0.05    2010-06-11T15:07+0200     DOLMEN (Olivier Mengué)
-        Relax t/11-run.t to make it pass on Linux/Alpha.
+        Relax t/11-run.t to make it pass on Linux/Alpha, thanks to CPAN Testers.
+        Relax t/11-run.t to make it pass on MacOS X, thanks to MADDINGUE.
+        Released from « Les Journées Perl 2010 » in Calais.
 
 0.04    2010-06-04T00:00+02:00    DOLMEN (Olivier Mengué)
         Full POD documentation.

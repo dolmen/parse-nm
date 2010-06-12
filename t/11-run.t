@@ -42,22 +42,24 @@ Parse::nm->run(
     files => $obj,
     filters => [
     {
-	name => qr/TestFunc/,
+	# MacOS X exports with an '_'
+	name => qr/_?TestFunc/,
 	type => qr/[A-Z]/,
 	action => sub {
 	    pass "action1 called";
 	    is ++$count, 1;
-	    is $_[0], "TestFunc", "arg0";
+	    like $_[0], qr/^_?TestFunc$/, "arg0: $_[0]";
 	    is $_[1], "T", "arg1";
 	}
     },
     {
-	name => qr/TestVar/,
+	# MacOS X exports with an '_'
+	name => qr/_?TestVar/,
 	#type => qr/[A-Z]/,
 	action => sub {
 	    pass "action2 called";
 	    is ++$count, 2;
-	    is $_[0], "TestVar", "arg0";
+	    like $_[0], qr/^_?TestVar$/, "arg0: $_[0]";
 	    like $_[1], qr/^[GD]$/, 'arg1';
 	}
     }
