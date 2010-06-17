@@ -33,10 +33,9 @@ END {
     }
 }
 
+my $count = 2;
 
-plan tests => 8;
-
-my $count = 0;
+plan tests => 4*$count;
 
 Parse::nm->run(
     files => $obj,
@@ -44,12 +43,12 @@ Parse::nm->run(
     {
 	# MacOS X exports with an '_'
 	name => qr/_?TestFunc/,
-	type => qr/[A-Z]/,
+	type => qr/T/,
 	action => sub {
 	    pass "action1 called";
-	    is ++$count, 1;
+	    is $count--, 2;
 	    like $_[0], qr/^_?TestFunc$/, "arg0: $_[0]";
-	    is $_[1], "T", "arg1";
+	    is $_[1], 'T', 'arg1';
 	}
     },
     {
@@ -58,9 +57,13 @@ Parse::nm->run(
 	#type => qr/[A-Z]/,
 	action => sub {
 	    pass "action2 called";
-	    is ++$count, 2;
+	    is $count--, 1;
 	    like $_[0], qr/^_?TestVar$/, "arg0: $_[0]";
+	    # Linux/Alpha  : G
+	    # Others       : D
 	    like $_[1], qr/^[GD]$/, 'arg1';
 	}
     }
 ]);
+
+fail "Missing output" for 1..(4*$count);
