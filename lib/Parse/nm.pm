@@ -3,7 +3,7 @@ use warnings;
 
 package Parse::nm;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use Carp 'croak';
 use Regexp::Assemble;
@@ -52,9 +52,16 @@ sub run
 
     my @options = exists $args{options} ? @{$args{options}} : ();
     my @files = ref $args{files} ? @{$args{files}} : ($args{files});
-    #open my $nm, 'nm '.join(' ', map { my $x = $_; $x =~ s/"/\\"/g; qq{"$x"} } @files).' |'
-    open my $nm, '-|', shell_quote('nm', '-P', @options, @files)
-        or croak "Can't run 'nm': $!";
+
+    my $nm;
+    {
+	# have to turn this on to get POSIX-ish output from nm -P on Irix
+	local $ENV{_XPG} = '1' if ($^O eq 'irix');
+
+	#open $nm, 'nm '.join(' ', map { my $x = $_; $x =~ s/"/\\"/g; qq{"$x"} } @files).' |'
+	open $nm, '-|', shell_quote('nm', '-P', @options, @files)
+	    or croak "Can't run 'nm': $!";
+    }
     my $r = $self->parse($nm, %args);
     close $nm;
     return $r;

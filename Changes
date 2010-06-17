@@ -1,6 +1,9 @@
 Revision history for Parse::nm
 
-0.05    2010-06-11T15:07+0200     DOLMEN (Olivier Mengué)
+0.06    2010-06-17T00:24+0200     DOLMEN (Olivier Mengué)
+	Fixed ->run() on IRIX, thanks to David Cantrell.
+
+0.05    2010-06-12T18:52+0200     DOLMEN (Olivier Mengué)
         Relax t/11-run.t to make it pass on Linux/Alpha, thanks to CPAN Testers.
         Relax t/11-run.t to make it pass on MacOS X, thanks to MADDINGUE.
         Released from « Les Journées Perl 2010 » in Calais.
