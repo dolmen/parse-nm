@@ -6,7 +6,23 @@ use warnings;
 
 use Module::Build;
 
-my $builder = Module::Build->new(
+my $class = 'Module::Build';
+
+if (-d '.git') {
+	$class = $class->subclass(
+		class => 'My::Builder',
+		code => q{
+			sub ACTION_tag {
+                my ($self) = @_;
+				my $v = $self->dist_version;
+				system(qw(git tag -a -m), "CPAN release $v", "release-$v")
+					or die "Git tagging failed.";
+			}
+		},
+	);
+}
+
+my $builder = $class->new(
 	module_name => 'Parse::nm',
 	dist_author => 'Olivier Mengué <dolmen@cpan.org>',
 	license     => 'perl',
