@@ -34,13 +34,15 @@ my $builder = $class->new(
 		},
 	},
 	requires    => {
+		'perl' => '5.006',
 		'Regexp::Assemble' => '0.34',
-		'String::ShellQuote' => '1.03',
+		'String::ShellQuote' => '1.04',
 	},
 	build_requires => {
 		'Module::Build' => '0.3607',
 		'Test::More' => '0.94',
 		'File::Spec' => 0,
+		'Test::NoWarnings' => '1.00',
 	},
     build_recommends => {
         'ExtUtils::CBuilder' => '0.27',
