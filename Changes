@@ -1,5 +1,9 @@
 Revision history for Parse::nm
 
+0.08    2010-08-21T04:25+0200     DOLMEN (Olivier Mengué)
+        Build.PL: Forgot Test::NoWarnings in build_depends.
+	Now using Test::NoWarnings in all tests.
+
 0.07    2010-08-21T04:00+0200     DOLMEN (Olivier Mengué)
         Fixed a bug when 'filters' are given in new() and not in parse().
         More tests. Test cover is at 91%.
