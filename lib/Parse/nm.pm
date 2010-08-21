@@ -20,9 +20,13 @@ sub _build_filters
 {
     my ($args) = @_;
 
-    unless (exists $args->{_comp_filters}) {
-        $args->{_comp_filters} = [];
-        $args->{_re} = Regexp::Assemble->new;
+    if (exists $args->{_comp_filters} && @{$args->{_comp_filters}}) {
+	# Copy data to preserve $self
+	$args->{_comp_filters} = [ @{$args->{_comp_filters}} ];
+	$args->{_re} = $args->{_re}->clone;
+    } else {
+	$args->{_comp_filters} = [];
+	$args->{_re} = Regexp::Assemble->new(fold_meta_pairs => 0);
     }
 
     if (exists $args->{filters}) {
@@ -35,12 +39,7 @@ sub _build_filters
                 qr/^($name) +($type) +/, $f->{action}
             ];
         }
-    }
-
-    if (wantarray) {
-        return @{$args->{_comp_filters}};
-    } elsif (defined wantarray) {
-        return exists $args->{_comp_filters};
+	delete $args->{filters};
     }
 }
 
@@ -137,8 +136,8 @@ Parse 'nm -P'-style data coming from a filehandle.
 Note that if your Perl is compiled with PerlIO (this is the default since
 5.8.0), you can easily parse a string by opening a string reference to it.
 
-    open($fh, '<', \$str)
-a string 
+    open($fh, '<', \$str);
+    Parse::nm->parse($fh, %options);
 
 =head2 ->run(%options)
 
@@ -190,6 +189,27 @@ L<http://www.opengroup.org/onlinepubs/009695399/utilities/nm.html>
 
 L<Binutils::Objdump>
 
+=head1 PLATFORM SUPPORT
+
+=over 4
+
+=item POSIX systems
+
+OK.
+
+=item StrawberryPerl (Windows)
+
+Work in progress (patches welcome).
+
+=item OpenBSD
+
+Parse::nm can not work on OpenBSD (at least up to 4.6) because 'nm' doesn't
+have a POSIX-compatible mode.
+
+L<http://www.openbsd.org/cgi-bin/man.cgi?query=nm&apropos=0&sektion=0&manpath=OpenBSD+4.6&arch=i386&format=html#STANDARDS>
+
+=back
+
 =head1 AUTHOR
 
 Olivier MenguE<eacute>, C<dolmen@cpan.org>
@@ -200,6 +220,6 @@ Copyright E<copy> 2010 Olivier MenguE<eacute>.
 
 This library is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself, either Perl version 5.12.0 or, at your option,
-any later version of Perl 5 you may hava available.
+any later version of Perl 5 you may have available.
 
 =cut
