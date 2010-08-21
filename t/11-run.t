@@ -7,6 +7,8 @@ use warnings;
 use Config;
 use File::Spec;
 use Test::More;
+use Test::NoWarnings;
+
 use Parse::nm;
 
 BEGIN {
@@ -35,7 +37,7 @@ END {
 
 my $count = 2;
 
-plan tests => 4*$count;
+plan tests => 1+4*$count;
 
 Parse::nm->run(
     files => $obj,
