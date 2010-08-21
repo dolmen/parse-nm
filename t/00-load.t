@@ -9,4 +9,4 @@ BEGIN {
     use_ok( 'Parse::nm' );
 }
 
-diag( "Testing Parse::nm ".Parse::nm->VERSION.", Perl $], $^X" );
+diag( "Testing Parse::nm ".Parse::nm->VERSION.", Perl $], $^O" );
