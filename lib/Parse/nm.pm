@@ -3,7 +3,7 @@ use warnings;
 
 package Parse::nm;
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 use Carp 'croak';
 use Regexp::Assemble;
@@ -216,7 +216,7 @@ Olivier MenguE<eacute>, C<dolmen@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright E<copy> 2010 Olivier MenguE<eacute>.
+Copyright E<copy> 2010-2011 Olivier MenguE<eacute>.
 
 This library is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself, either Perl version 5.12.0 or, at your option,

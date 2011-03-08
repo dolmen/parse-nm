@@ -1,17 +1,23 @@
 Revision history for Parse::nm
 
+0.09    2011-03-08T13:10+0200     DOLMEN (Olivier Mengué)
+        Build.PL:
+        - workaround for RT#66040: force Locale::Maketext
+          1.17 dependency if an older one is present.
+        - add configure_require dependency on Module::Build
+
 0.08    2010-08-21T04:25+0200     DOLMEN (Olivier Mengué)
         Build.PL: Forgot Test::NoWarnings in build_depends.
-	Now using Test::NoWarnings in all tests.
+        Now using Test::NoWarnings in all tests.
 
 0.07    2010-08-21T04:00+0200     DOLMEN (Olivier Mengué)
         Fixed a bug when 'filters' are given in new() and not in parse().
         More tests. Test cover is at 91%.
-	POD fixes. Added info about lack of support on OpenBSD.
-	Windows still not supported.
+        POD fixes. Added info about lack of support on OpenBSD.
+        Windows still not supported.
 
 0.06    2010-06-17T00:24+0200     DOLMEN (Olivier Mengué)
-	Fixed ->run() on IRIX, thanks to David Cantrell.
+        Fixed ->run() on IRIX, thanks to David Cantrell.
 
 0.05    2010-06-12T18:52+0200     DOLMEN (Olivier Mengué)
         Relax t/11-run.t to make it pass on Linux/Alpha, thanks to CPAN Testers.
