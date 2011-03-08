@@ -22,6 +22,19 @@ if (-d '.git') {
 	);
 }
 
+
+# Conditional build_requires
+my @build_requires;
+# Workaround test problems when a broken version of Locale::Maketext is installed
+# => we force an upgrade to 1.16+
+# https://rt.cpan.org/Ticket/Display.html?id=66040
+eval {
+	use Locale::Maketext;
+	#push @build_requires, 'Locale::Maketext' => '1.17' if Locale::Maketext->VERSION < '1.17';
+};
+
+
+
 my $builder = $class->new(
 	module_name => 'Parse::nm',
 	dist_author => 'Olivier Mengué <dolmen@cpan.org>',
@@ -43,6 +56,7 @@ my $builder = $class->new(
 		'Test::More' => '0.94',
 		'File::Spec' => 0,
 		'Test::NoWarnings' => '1.00',
+		@build_requires,
 	},
     build_recommends => {
         'ExtUtils::CBuilder' => '0.27',
