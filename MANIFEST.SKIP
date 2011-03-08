@@ -1,4 +1,4 @@
-^MYMETA.yml$
+^MYMETA.\*$
 ^_build\b
 ^\.git\b
 \b\..*\.swp$
