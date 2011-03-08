@@ -30,7 +30,7 @@ my @build_requires;
 # https://rt.cpan.org/Ticket/Display.html?id=66040
 eval {
 	use Locale::Maketext;
-	#push @build_requires, 'Locale::Maketext' => '1.17' if Locale::Maketext->VERSION < '1.17';
+	push @build_requires, 'Locale::Maketext' => '1.17' if Locale::Maketext->VERSION < '1.17';
 };
 
 
