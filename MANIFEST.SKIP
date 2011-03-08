@@ -1,4 +1,3 @@
-^MYMETA.\*$
 ^_build\b
 ^\.git\b
 \b\..*\.swp$
@@ -15,3 +14,5 @@ cover_db\b
 ^Parse-nm-.*\.tar.gz$
 ^Parse-nm-.*\b
 \b90-.*\.t$
+^MYMETA\.yml$
+^MYMETA\.json$
