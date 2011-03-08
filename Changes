@@ -1,6 +1,6 @@
 Revision history for Parse::nm
 
-0.09    2011-03-08T13:10+0200     DOLMEN (Olivier Mengué)
+0.09    2011-03-08T13:41+0100     DOLMEN (Olivier Mengué)
         Build.PL:
         - workaround for RT#66040: force Locale::Maketext
           1.17 dependency if an older one is present.
