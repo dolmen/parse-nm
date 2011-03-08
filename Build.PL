@@ -51,8 +51,11 @@ my $builder = $class->new(
 		'Regexp::Assemble' => '0.34',
 		'String::ShellQuote' => '1.04',
 	},
+	configure_requires => {
+		'Module::Build' => '0.38',
+	},
 	build_requires => {
-		'Module::Build' => '0.3607',
+		'Module::Build' => '0.38',
 		'Test::More' => '0.94',
 		'File::Spec' => 0,
 		'Test::NoWarnings' => '1.00',
